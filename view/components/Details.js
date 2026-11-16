@@ -1,5 +1,5 @@
-import { h, Reducer } from "../laf/index.js";
-import { CountContext } from "../contexts.js";
+import { h, Reducer } from "../../laf/index.js";
+import { CountContext } from "../../contexts.js";
 
 export function Details() {
   const checkState = new Reducer((v) => !v, false);
@@ -14,11 +14,11 @@ export function Details() {
     null,
     {},
     h("button", { onClick: () => checkState.dispatch() }, () =>
-      checkState.get() ? "close details" : "open details",
+      checkState.subscribe() ? "close details" : "open details",
     ),
     () =>
-      checkState.get()
-        ? items.slice(0, count.get()).map((i) => h("div", {}, i))
+      checkState.subscribe()
+        ? items.slice(0, count.subscribe()).map((i) => h("div", {}, i))
         : null,
   );
 }

@@ -11,6 +11,10 @@ body {
 
   display: grid;
 
-  background-color: var(--color-surface);
+  background-color: var(--color-background);
   color: var(--color-text);
+}
+
+.app-body {
+  width: 80vw;
 }
