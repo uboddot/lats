@@ -1,5 +1,5 @@
 import { h, mount, Provider, State } from "./laf/index.js";
-import { SkyV } from "./view/components/SkyView.js";
+import { SkyV } from "./view/components/SkyV.js";
 import { SkyPM } from "./representationModel/SkyPM.js";
 import { Sky } from "./model/Sky.js";
 
