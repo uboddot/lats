@@ -26,4 +26,8 @@ export class Tile {
   setLeftNb(nb) {
     this.leftNb = nb;
   }
+
+  getNeighbours() {
+    return [this.upNb, this.leftNb, this.rightNb, this.downNb].filter(Boolean);
+  }
 }

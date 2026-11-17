@@ -7,8 +7,19 @@ export function StarV(starPM) {
   return h(
     "div",
     {
-      class: "star",
-      style: `--x: ${starPM.leftOffset}%; --y: ${starPM.leftOffset}%; --speed: ${starPM.twinkleSpeed.subscribe()}s; --delay: ${starPM.delay}s`,
+      class: () =>
+        [
+          "star",
+          starPM.showAsNb.subscribe() && "nb",
+          starPM.hovered.subscribe() && "hovered",
+        ]
+          .filter(Boolean)
+          .join(" "),
+      style: `
+        --x: ${starPM.leftOffset}%; 
+        --y: ${starPM.topOffset}%; 
+        --speed: ${starPM.twinkleSpeed.subscribe()}s; 
+        --delay: ${starPM.delay}s;`,
     },
     "",
   );

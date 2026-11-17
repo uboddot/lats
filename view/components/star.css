@@ -1,10 +1,12 @@
 .star {
   --size: 4px;
-  --glow: #9cf;
-  --color: #fff;
+  --glow: rgb(23, 87, 151);
+  --baseColor: #fff;
   --spike: 25px;
+  --showAsNbColor: rgb(151, 151, 23);
+  --color: var(--baseColor);
 
-  background-color: azure;
+  background-color: var(--color);
   border-radius: 100%;
   width: var(--size);
   height: var(--size);
@@ -16,12 +18,21 @@
   animation-delay: var(--delay, 0s);
 
   position: absolute;
-  top: var(--x, 50%);
-  left: var(--y, 50%);
+  left: var(--x, 50%);
+  top: var(--y, 50%);
 
-  /* translate: -50% 50%; */
+  transition:
+    transform 250ms ease-out,
+    filter 250ms ease-out;
 }
-
+.star.nb {
+  --color: rgb(255, 230, 140);
+  --glow: rgb(255, 170, 40);
+}
+.star.hovered {
+  transform: scale(1.8);
+  filter: brightness(1.4);
+}
 /* the cross: two thin lines that fade out at the ends */
 .star::before,
 .star::after {

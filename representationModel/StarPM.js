@@ -1,4 +1,4 @@
-import { State } from "../laf/index.js";
+import { State, Reducer } from "../laf/index.js";
 
 export class StarPM {
   constructor() {
@@ -6,5 +6,7 @@ export class StarPM {
     this.twinkleSpeed = new State((Math.random() + 5) * 2);
     this.leftOffset = 30 + Math.random() * 40;
     this.topOffset = 30 + Math.random() * 40;
+    this.showAsNb = new State(false);
+    this.hovered = new State(false);
   }
 }
