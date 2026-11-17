@@ -11,6 +11,7 @@ export function TileV(t) {
       class: "tile",
       onmouseenter: () => t.hover(),
       onmouseleave: () => t.unhover(),
+      onclick: () => t.select(),
       style: `--col: ${t.gridColumn}; --row: ${t.gridRow};`,
     },
     StarV(t.star),

@@ -2,12 +2,13 @@ import { StarPM } from "./StarPM.js";
 
 export class TilePM {
   neighbours = [];
-  constructor(tile) {
+  constructor(tile, sky) {
     this.tile = tile;
     const { col, row } = tile.getPosition();
     this.gridColumn = col + 1;
     this.gridRow = row + 1;
     this.star = new StarPM(tile);
+    this.sky = sky;
   }
   hover() {
     this.#setHover(true);
@@ -25,5 +26,9 @@ export class TilePM {
       x: this.gridColumn - 1 + this.star.leftOffset / 100,
       y: this.gridRow - 1 + this.star.topOffset / 100,
     };
+  }
+
+  select() {
+    this.sky.selectTile(this);
   }
 }
