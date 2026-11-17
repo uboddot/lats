@@ -11,6 +11,11 @@ export function ConstillationV(skyPM) {
       viewBox: `0 0 ${skyPM.columns} ${skyPM.rows}`,
       preserveAspectRatio: "none",
     },
-    h("line", { x1: 2, y1: 1, x2: 100, y2: 200, color: "#fff" }),
+    () =>
+      skyPM.lines
+        .subscribe()
+        .map(({ from, to }) =>
+          h("line", { x1: from.x, y1: from.y, x2: to.x, y2: to.y }),
+        ),
   );
 }

@@ -19,4 +19,11 @@ export class TilePM {
     this.star.hovered.update(on);
     this.neighbours.forEach((nb) => nb.star.showAsNb.update(on));
   }
+
+  pointOfStar() {
+    return {
+      x: this.gridColumn - 1 + this.star.leftOffset / 100,
+      y: this.gridRow - 1 + this.star.topOffset / 100,
+    };
+  }
 }

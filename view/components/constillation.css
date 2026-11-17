@@ -4,3 +4,9 @@
   height: 100%;
   pointer-events: none;
 }
+
+line {
+  stroke: aliceblue;
+  stroke-width: 0.06rem;
+  vector-effect: non-scaling-stroke;
+}

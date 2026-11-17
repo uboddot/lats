@@ -24,6 +24,8 @@
   transition:
     transform 250ms ease-out,
     filter 250ms ease-out;
+
+  translate: -50% -50%;
 }
 .star.nb {
   --color: rgb(255, 230, 140);
