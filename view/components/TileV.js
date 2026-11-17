@@ -11,6 +11,6 @@ export function TileV(t) {
       class: "tile",
       style: `--col: ${t.gridColumn}; --row: ${t.gridRow};`,
     },
-    StarV(),
+    StarV(t.star),
   );
 }

@@ -3,7 +3,5 @@
   grid-row: var(--row);
   aspect-ratio: 16 / 10;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }

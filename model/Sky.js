@@ -4,17 +4,15 @@ export class Sky {
   tiles = [];
 
   constructor(width, height) {
-    this.setTiles(width, height);
+    this.#setTiles(width, height);
   }
 
-  setTiles = (width, height) => {
+  #setTiles = (width, height) => {
     // make basic array structure
-    let tiles = [];
-    tiles = Array.from({ length: width }, (_, col) =>
+    this.tiles = Array.from({ length: width }, (_, col) =>
       Array.from({ length: height }, (_, row) => new Tile(col, row)),
     );
 
-    this.tiles = tiles;
     this.tiles.flat().forEach((t) => this.#setNeighbours(t));
   };
 
@@ -28,5 +26,12 @@ export class Sky {
     tile.setDownNb(this.#tileAt(col, row + 1));
     tile.setRightNb(this.#tileAt(col + 1, row));
     tile.setLeftNb(this.#tileAt(col - 1, row));
+  }
+
+  getWidth() {
+    return this.tiles.length;
+  }
+  getHeight() {
+    return this.tiles[0]?.length ?? 0;
   }
 }

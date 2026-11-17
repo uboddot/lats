@@ -3,7 +3,7 @@ export class Tile {
   row;
   leftNb;
   rightNb;
-  uppNb;
+  upNb;
   downNb;
   constructor(width, height) {
     this.col = width;
@@ -15,7 +15,7 @@ export class Tile {
   }
 
   setUpNb(nb) {
-    this.uppNb = nb;
+    this.upNb = nb;
   }
   setDownNb(nb) {
     this.downNb = nb;

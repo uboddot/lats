@@ -15,7 +15,11 @@
   animation: twinkle var(--speed, 3s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 
-  position: relative;
+  position: absolute;
+  top: var(--x, 50%);
+  left: var(--y, 50%);
+
+  /* translate: -50% 50%; */
 }
 
 /* the cross: two thin lines that fade out at the ends */
