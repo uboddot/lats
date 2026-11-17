@@ -1,4 +1,5 @@
 import { h } from "../../laf/index.js";
+import { StarV } from "./StarV.js";
 import { linkCSS } from "./util.js";
 
 linkCSS("./tile.css");
@@ -10,6 +11,6 @@ export function TileV(t) {
       class: "tile",
       style: `--col: ${t.gridColumn}; --row: ${t.gridRow};`,
     },
-    h("div", {}, "tile"),
+    StarV(),
   );
 }

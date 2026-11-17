@@ -1,0 +1,79 @@
+.star {
+  --size: 4px;
+  --glow: #9cf;
+  --color: #fff;
+  --spike: 25px;
+
+  background-color: azure;
+  border-radius: 100%;
+  width: var(--size);
+  height: var(--size);
+  box-shadow:
+    0 0 var(--size) var(--color),
+    0 0 calc(var(--size) * 3) var(--glow),
+    0 0 calc(var(--size) * 6) color-mix(in srgb, var(--glow) 40%, transparent);
+  animation: twinkle var(--speed, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+
+  position: relative;
+}
+
+/* the cross: two thin lines that fade out at the ends */
+.star::before,
+.star::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--spike);
+  height: 1px;
+  translate: -50% -50%;
+  background: linear-gradient(90deg, transparent, var(--color), transparent);
+  animation: sparkle var(--speed, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.star::after {
+  rotate: 90deg;
+}
+
+/* the core dims and shrinks briefly... */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+  48% {
+    opacity: 0.4;
+    scale: 0.7;
+  }
+  52% {
+    opacity: 0.7;
+    scale: 0.8;
+  }
+}
+
+/* ...while the spikes flicker in length */
+@keyframes sparkle {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  30% {
+    scale: 1.3 1;
+  }
+  50% {
+    scale: 0.4 1;
+  }
+  70% {
+    scale: 1.1 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .star::before,
+  .star::after {
+    animation: none;
+  }
+}
