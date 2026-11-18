@@ -31,4 +31,8 @@ export class TilePM {
   select() {
     this.sky.selectTile(this);
   }
+
+  showAsSelected(bool) {
+    this.star.showAsSelected(bool);
+  }
 }

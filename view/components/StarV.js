@@ -12,6 +12,7 @@ export function StarV(starPM) {
           "star",
           starPM.showAsNb.subscribe() && "nb",
           starPM.hovered.subscribe() && "hovered",
+          starPM.isSelected.subscribe() && "selected",
         ]
           .filter(Boolean)
           .join(" "),

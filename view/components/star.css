@@ -35,6 +35,11 @@
   transform: scale(1.8);
   filter: brightness(1.4);
 }
+.star.selected {
+  --glow: rgb(107, 109, 244);
+  --color: blue;
+  transform: scale(2.2);
+}
 /* the cross: two thin lines that fade out at the ends */
 .star::before,
 .star::after {

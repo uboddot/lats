@@ -17,16 +17,22 @@ export class SkyPM {
   selectTile(selectedTile) {
     if (this.selectedTiles.length === 0) {
       this.selectedTiles.push(selectedTile);
+      selectedTile.showAsSelected(true);
       return;
     } else {
+      if (this.selectedTiles.includes(selectedTile)) {
+        this.selectedTiles.pop().showAsSelected(false);
+        return;
+      }
+      let fromStar = this.selectedTiles.pop();
       this.lines.update([
         ...this.lines.peek(),
         {
-          from: this.selectedTiles.pop().pointOfStar(),
+          from: fromStar.pointOfStar(),
           to: selectedTile.pointOfStar(),
         },
       ]);
-      console.log(this.lines);
+      fromStar.showAsSelected(false);
     }
   }
 }

@@ -8,5 +8,10 @@ export class StarPM {
     this.topOffset = 30 + Math.random() * 40;
     this.showAsNb = new State(false);
     this.hovered = new State(false);
+    this.isSelected = new State(false);
+  }
+
+  showAsSelected(bool) {
+    this.isSelected.update(bool);
   }
 }
