@@ -1,4 +1,4 @@
-export class Constillation {
+export class Constellation {
   lines = [];
 
   getLinesAsArray() {
@@ -7,12 +7,12 @@ export class Constillation {
 
   constructor(constilationLines) {
     this.lines = constilationLines.map((line) => {
-      return new ConstillationLine(line.fromTile, line.toTile);
+      return new ConstellationLine(line.fromTile, line.toTile);
     });
   }
 }
 
-export class ConstillationLine {
+export class ConstellationLine {
   constructor(fromTile, toTile) {
     this.fromTile = fromTile;
     this.toTile = toTile;

@@ -1,27 +1,25 @@
 import { h } from "../../laf/index.js";
 import { linkCSS } from "./util.js";
 
-linkCSS("./constillation.css");
+linkCSS("./constellation.css");
 
-export function ConstillationV(skyPM) {
+export function DrawingConstellationV(skyPM) {
   return h(
     "svg",
     {
-      class: "constillation",
+      class: "constellation",
       viewBox: `0 0 ${skyPM.columns} ${skyPM.rows}`,
       preserveAspectRatio: "none",
     },
     () =>
-      skyPM.lines
-        .subscribe()
-        .map(({ from, to }) =>
-          h("line", {
-            x1: from.pointOfStar().x,
-            y1: from.pointOfStar().y,
-            x2: to.pointOfStar().x,
-            y2: to.pointOfStar().y,
-          }),
-        ),
+      skyPM.lines.subscribe().map(({ from, to }) =>
+        h("line", {
+          x1: from.pointOfStar().x,
+          y1: from.pointOfStar().y,
+          x2: to.pointOfStar().x,
+          y2: to.pointOfStar().y,
+        }),
+      ),
     () => {
       const sel = skyPM.toCursorLine.subscribe();
       const p = sel && skyPM.cursor.point.subscribe();

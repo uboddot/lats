@@ -1,7 +1,8 @@
 import { h } from "../../laf/index.js";
 import { TileV } from "./TileV.js";
 import { linkCSS } from "./util.js";
-import { ConstillationV } from "./ConstillationV.js";
+import { DrawingConstellationV } from "./DrawingConstellationV.js";
+import { ConstellationV } from "./ConstellationV.js";
 
 linkCSS("./sky.css");
 
@@ -24,7 +25,13 @@ export function SkyV(skyPM) {
         onmouseleave: () => skyPM.cursor.leave(),
       },
       skyPM.tiles.map((t) => TileV(t)),
-      ConstillationV(skyPM),
+      DrawingConstellationV(skyPM),
+      ConstellationV(skyPM),
+    ),
+    h(
+      "button",
+      { onclick: () => skyPM.saveConstellation() },
+      "save constellation",
     ),
   );
 }

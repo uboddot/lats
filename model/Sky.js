@@ -1,11 +1,16 @@
 import { Tile } from "./Tile.js";
-import { ConstillationLine, Constillation } from "./Constillation.js";
+import { ConstellationLine, Constellation } from "./Constellation.js";
 
 export class Sky {
   tiles = [];
-  constillations = []; // array of constiallations
+  constillations = []; // array of constellations
   constructor(width, height) {
     this.#setTiles(width, height);
+    this.constillations.push(
+      new Constellation([
+        new ConstellationLine(this.#tileAt(0, 0), this.#tileAt(1, 1)),
+      ]),
+    );
   }
 
   #setTiles = (width, height) => {
@@ -38,6 +43,6 @@ export class Sky {
   }
 
   addConstillation(lines) {
-    this.constillations.push(new Constillation(lines));
+    this.constillations.push(new Constellation(lines));
   }
 }

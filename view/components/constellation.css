@@ -1,12 +1,13 @@
-.constillation {
+.constellation {
   position: absolute;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  color: aliceblue;
 }
 
-line {
-  stroke: aliceblue;
+.constellation line {
+  stroke: currentColor;
   stroke-width: 0.06rem;
   vector-effect: non-scaling-stroke;
 }

@@ -1,12 +1,14 @@
 import { TilePM } from "./TilePM.js";
 import { State } from "../laf/reactive.js";
 import { CursorPM } from "./CursorPM.js";
+import { ConstellationPM } from "./ConstellationPM.js";
 
 export class SkyPM {
   selectedTiles = [];
   cursor = new CursorPM();
   lines = new State([]);
   toCursorLine = new State(null);
+  constellations = new State([]); // of ConstellationPM
 
   constructor(sky) {
     this.sky = sky;
@@ -17,8 +19,8 @@ export class SkyPM {
     this.tiles.forEach((pm) => {
       pm.neighbours = pm.tile.getNeighbours().map((nb) => pmByTile.get(nb));
     });
-    sky.constillations.map((constillation) =>
-      this.#instanciateLines(constillation.getLinesAsArray(), pmByTile),
+    sky.constillations.map((constellation) =>
+      this.#instanciateConstellationsFromModel(constellation, pmByTile),
     );
   }
 
@@ -49,6 +51,15 @@ export class SkyPM {
     }
   }
 
+  saveConstellation() {
+    let newConstellation = new ConstellationPM(this.lines.peek());
+    this.constellations.update([
+      ...this.constellations.peek(),
+      newConstellation,
+    ]);
+    this.lines.update([]);
+  }
+
   safeConstillationToModel() {
     let modelLines = this.lines.peek().map((line) => {
       {
@@ -58,14 +69,10 @@ export class SkyPM {
     this.sky.addConstillation(modelLines);
   }
 
-  #instanciateLines(arrayOfLines, pmByTile) {
-    arrayOfLines.forEach((line) => {
-      this.lines.update(
-        arrayOfLines.map((line) => ({
-          from: pmByTile.get(line.fromTile),
-          to: pmByTile.get(line.toTile),
-        })),
-      );
-    });
+  #instanciateConstellationsFromModel(constellation, pmByTile) {
+    this.constellations.update([
+      ...this.constellations.peek(),
+      ConstellationPM.fromModel(constellation, pmByTile),
+    ]);
   }
 }
