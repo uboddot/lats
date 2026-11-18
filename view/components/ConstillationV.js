@@ -17,5 +17,17 @@ export function ConstillationV(skyPM) {
         .map(({ from, to }) =>
           h("line", { x1: from.x, y1: from.y, x2: to.x, y2: to.y }),
         ),
+    () => {
+      const sel = skyPM.toCursorLine.subscribe();
+      const p = sel && skyPM.cursor.point.subscribe();
+      console.log(p);
+      if (!p) return null;
+      return h("line", {
+        x1: sel.from.x,
+        y1: sel.from.y,
+        x2: p.x,
+        y2: p.y,
+      });
+    },
   );
 }
