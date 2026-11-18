@@ -15,12 +15,16 @@ export function ConstillationV(skyPM) {
       skyPM.lines
         .subscribe()
         .map(({ from, to }) =>
-          h("line", { x1: from.x, y1: from.y, x2: to.x, y2: to.y }),
+          h("line", {
+            x1: from.pointOfStar().x,
+            y1: from.pointOfStar().y,
+            x2: to.pointOfStar().x,
+            y2: to.pointOfStar().y,
+          }),
         ),
     () => {
       const sel = skyPM.toCursorLine.subscribe();
       const p = sel && skyPM.cursor.point.subscribe();
-      console.log(p);
       if (!p) return null;
       return h("line", {
         x1: sel.from.x,

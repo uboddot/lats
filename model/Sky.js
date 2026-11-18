@@ -1,8 +1,9 @@
 import { Tile } from "./Tile.js";
+import { ConstillationLine, Constillation } from "./Constillation.js";
 
 export class Sky {
   tiles = [];
-
+  constillations = []; // array of constiallations
   constructor(width, height) {
     this.#setTiles(width, height);
   }
@@ -31,7 +32,12 @@ export class Sky {
   getWidth() {
     return this.tiles.length;
   }
+
   getHeight() {
     return this.tiles[0]?.length ?? 0;
+  }
+
+  addConstillation(lines) {
+    this.constillations.push(new Constillation(lines));
   }
 }

@@ -5,8 +5,11 @@ import { CursorPM } from "./CursorPM.js";
 export class SkyPM {
   selectedTiles = [];
   cursor = new CursorPM();
+  lines = new State([]);
+  toCursorLine = new State(null);
 
   constructor(sky) {
+    this.sky = sky;
     this.rows = sky.getHeight();
     this.columns = sky.getWidth();
     this.tiles = sky.tiles.flat().map((t) => new TilePM(t, this));
@@ -14,8 +17,9 @@ export class SkyPM {
     this.tiles.forEach((pm) => {
       pm.neighbours = pm.tile.getNeighbours().map((nb) => pmByTile.get(nb));
     });
-    this.lines = new State([]);
-    this.toCursorLine = new State(null);
+    sky.constillations.map((constillation) =>
+      this.#instanciateLines(constillation.getLinesAsArray(), pmByTile),
+    );
   }
 
   selectTile(selectedTile) {
@@ -36,12 +40,32 @@ export class SkyPM {
       this.lines.update([
         ...this.lines.peek(),
         {
-          from: fromStar.pointOfStar(),
-          to: selectedTile.pointOfStar(),
+          from: fromStar,
+          to: selectedTile,
         },
       ]);
       fromStar.showAsSelected(false);
       this.toCursorLine.update(null);
     }
+  }
+
+  safeConstillationToModel() {
+    let modelLines = this.lines.peek().map((line) => {
+      {
+        return { fromTile: line.from.tile, toTile: line.to.tile };
+      }
+    });
+    this.sky.addConstillation(modelLines);
+  }
+
+  #instanciateLines(arrayOfLines, pmByTile) {
+    arrayOfLines.forEach((line) => {
+      this.lines.update(
+        arrayOfLines.map((line) => ({
+          from: pmByTile.get(line.fromTile),
+          to: pmByTile.get(line.toTile),
+        })),
+      );
+    });
   }
 }

@@ -7,12 +7,7 @@ const sky = new Sky(5, 5);
 const skyPM = new SkyPM(sky);
 
 function App() {
-  return h(
-    "div",
-    { class: "app-body" },
-    "Welcome to Look at the Stars",
-    SkyV(skyPM),
-  );
+  return h("div", { class: "app-body" }, SkyV(skyPM));
 }
 
 mount(h(App), document.getElementById("app"));

@@ -36,8 +36,8 @@
   filter: brightness(1.4);
 }
 .star.selected {
-  --glow: rgb(107, 109, 244);
-  --color: blue;
+  --glow: rgb(196, 255, 144);
+  --color: rgb(197, 181, 90);
   transform: scale(2.2);
 }
 /* the cross: two thin lines that fade out at the ends */
