@@ -1,10 +1,13 @@
 import { h } from "../../laf/index.js";
 import { linkCSS } from "./util.js";
+import { ConstellationPanelEntry } from "./ConstellationPanelEntry.js";
 
 linkCSS("./constellationPanel.css");
 
 export function ConstellationPanel(skyPM) {
   return h("div", { class: "constellation-panel" }, () =>
-    skyPM.constellations.subscribe().map((constellation) => h("div", {}, "hi")),
+    skyPM.constellations
+      .subscribe()
+      .map((constellation) => ConstellationPanelEntry(constellation)),
   );
 }

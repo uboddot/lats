@@ -3,12 +3,19 @@ import { SkyV } from "./view/components/SkyV.js";
 import { SkyPM } from "./representationModel/SkyPM.js";
 import { Sky } from "./model/Sky.js";
 import { ConstellationPanel } from "./view/components/ConstellationPanel.js";
+import { ConstellationInstruction } from "./view/components/ConstellationInstruction.js";
 
 const sky = new Sky(5, 5);
 const skyPM = new SkyPM(sky);
 
 function App() {
-  return h("div", { id: "app-layout" }, SkyV(skyPM), ConstellationPanel(skyPM));
+  return h(
+    "div",
+    { id: "app-layout" },
+    ConstellationInstruction(skyPM),
+    SkyV(skyPM),
+    ConstellationPanel(skyPM),
+  );
 }
 
 mount(h(App), document.getElementById("app"));

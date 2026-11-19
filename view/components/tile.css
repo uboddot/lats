@@ -1,7 +1,6 @@
 .tile {
   grid-column: var(--col);
   grid-row: var(--row);
-  aspect-ratio: 16 / 10;
 
   position: relative;
 }

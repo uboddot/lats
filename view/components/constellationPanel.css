@@ -4,7 +4,19 @@
 
   display: flex;
   flex-direction: column;
+  gap: 0.2rem;
 
   align-items: center;
   justify-content: center;
+}
+
+.constellation-panel-entry {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border: 1px solid var(--color-info);
+  border-radius: 5rem;
+
+  justify-content: start;
+  align-items: center;
 }
