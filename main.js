@@ -7,7 +7,7 @@ const sky = new Sky(5, 5);
 const skyPM = new SkyPM(sky);
 
 function App() {
-  return h("div", { class: "app-body" }, SkyV(skyPM));
+  return h("div", { id: "app-layout" }, SkyV(skyPM));
 }
 
 mount(h(App), document.getElementById("app"));

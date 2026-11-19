@@ -3,6 +3,7 @@ import { TileV } from "./TileV.js";
 import { linkCSS } from "./util.js";
 import { DrawingConstellationV } from "./DrawingConstellationV.js";
 import { ConstellationV } from "./ConstellationV.js";
+import { SkyControlls } from "./SkyControlls.js";
 
 linkCSS("./sky.css");
 
@@ -28,10 +29,6 @@ export function SkyV(skyPM) {
       DrawingConstellationV(skyPM),
       ConstellationV(skyPM),
     ),
-    h(
-      "button",
-      { onclick: () => skyPM.saveConstellation() },
-      "save constellation",
-    ),
+    SkyControlls(skyPM),
   );
 }
