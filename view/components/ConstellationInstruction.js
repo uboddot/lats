@@ -1,9 +1,9 @@
 import { h } from "../../laf/index.js";
-import { SkyV } from "./SkyV.js";
+import { SkyV } from "./board/SkyV.js";
 
 import { linkCSS } from "./util.js";
 
-linkCSS("./constellationInstruction.css");
+linkCSS("./constellationInstruction.css", import.meta.url);
 
 export function ConstellationInstruction(constellationsCardsPM) {
   return h(

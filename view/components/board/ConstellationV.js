@@ -1,4 +1,4 @@
-import { h } from "../../laf/index.js";
+import { h } from "../../../laf/index.js";
 
 export function ConstellationV(skyPM) {
   return h(

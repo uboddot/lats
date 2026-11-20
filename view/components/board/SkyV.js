@@ -1,10 +1,10 @@
-import { h } from "../../laf/index.js";
+import { h } from "../../../laf/index.js";
 import { TileV } from "./TileV.js";
-import { linkCSS } from "./util.js";
+import { linkCSS } from "../util.js";
 import { DrawingConstellationV } from "./DrawingConstellationV.js";
 import { ConstellationV } from "./ConstellationV.js";
 
-linkCSS("./sky.css");
+linkCSS("./sky.css", import.meta.url);
 
 export function SkyBoard(skyPM) {
   return h("div", { class: "board" }, SkyV(skyPM));

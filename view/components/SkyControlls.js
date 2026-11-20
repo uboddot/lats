@@ -1,7 +1,7 @@
 import { h } from "../../laf/index.js";
 import { linkCSS } from "./util.js";
 
-linkCSS("./skyControlls.css");
+linkCSS("./skyControlls.css", import.meta.url);
 
 export function SkyControlls(skyPM) {
   return h(

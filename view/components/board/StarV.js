@@ -1,7 +1,7 @@
-import { h, State } from "../../laf/index.js";
-import { linkCSS } from "./util.js";
+import { h, State } from "../../../laf/index.js";
+import { linkCSS } from "../util.js";
 
-linkCSS("./star.css");
+linkCSS("./star.css", import.meta.url);
 
 export function StarV(starPM) {
   return h(

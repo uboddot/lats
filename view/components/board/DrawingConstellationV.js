@@ -1,7 +1,7 @@
-import { h } from "../../laf/index.js";
-import { linkCSS } from "./util.js";
+import { h } from "../../../laf/index.js";
+import { linkCSS } from "../util.js";
 
-linkCSS("./constellation.css");
+linkCSS("./constellation.css", import.meta.url);
 
 export function DrawingConstellationV(skyPM) {
   return h(
