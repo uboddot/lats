@@ -3,32 +3,30 @@ import { TileV } from "./TileV.js";
 import { linkCSS } from "./util.js";
 import { DrawingConstellationV } from "./DrawingConstellationV.js";
 import { ConstellationV } from "./ConstellationV.js";
-import { SkyControlls } from "./SkyControlls.js";
 
 linkCSS("./sky.css");
 
+export function SkyBoard(skyPM) {
+  return h("div", { class: "board" }, SkyV(skyPM));
+}
+
 export function SkyV(skyPM) {
   return h(
-    null,
-    {},
-    h(
-      "div",
-      {
-        class: "sky",
-        style: `--cols: ${skyPM.columns}; --rows: ${skyPM.rows};`,
-        onmousemove: (e) => {
-          const r = e.currentTarget.getBoundingClientRect();
-          skyPM.cursor.moveTo(
-            ((e.clientX - r.left) / r.width) * skyPM.columns,
-            ((e.clientY - r.top) / r.height) * skyPM.rows,
-          );
-        },
-        onmouseleave: () => skyPM.cursor.leave(),
+    "div",
+    {
+      class: "sky",
+      style: `--cols: ${skyPM.columns}; --rows: ${skyPM.rows};`,
+      onmousemove: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        skyPM.cursor.moveTo(
+          ((e.clientX - r.left) / r.width) * skyPM.columns,
+          ((e.clientY - r.top) / r.height) * skyPM.rows,
+        );
       },
-      skyPM.tiles.map((t) => TileV(t)),
-      DrawingConstellationV(skyPM),
-      ConstellationV(skyPM),
-    ),
-    SkyControlls(skyPM),
+      onmouseleave: () => skyPM.cursor.leave(),
+    },
+    skyPM.tiles.map((t) => TileV(t)),
+    DrawingConstellationV(skyPM),
+    ConstellationV(skyPM),
   );
 }
